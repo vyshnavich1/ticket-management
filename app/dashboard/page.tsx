@@ -146,7 +146,17 @@ export default function DashboardPage() {
           } />
         </div>
 
-        {chaosScenario && chaosScenario !== 'normal' && (
+        {isError ? (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-800"
+          >
+            <span>⚠️</span>
+            <span>{errorMessage || 'Service temporarily unavailable. Please try again.'}</span>
+            <Button variant="ghost" size="sm" className="ml-auto text-red-800" onClick={refresh}>Retry</Button>
+          </motion.div>
+        ) : chaosScenario && chaosScenario !== 'normal' && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -159,18 +169,6 @@ export default function DashboardPage() {
               {chaosScenario === 'duplicate' && 'Duplicate records detected and removed automatically.'}
             </span>
             <Button variant="ghost" size="sm" className="ml-auto text-amber-800" onClick={refresh}>Retry</Button>
-          </motion.div>
-        )}
-
-        {isError && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-800"
-          >
-            <span>⚠️</span>
-            <span>{errorMessage || 'Failed to load tickets. Please try again.'}</span>
-            <Button variant="ghost" size="sm" className="ml-auto text-red-800" onClick={refresh}>Retry</Button>
           </motion.div>
         )}
 

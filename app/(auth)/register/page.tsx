@@ -34,7 +34,7 @@ export default function RegisterPage() {
     }
   }
 
-  const inputClass = 'w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow';
+  const inputClass = 'w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow';
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
